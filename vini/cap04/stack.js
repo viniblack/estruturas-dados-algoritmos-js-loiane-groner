@@ -52,9 +52,28 @@ class Stack {
   }
 }
 
-// Executando o código
+// Executando o código Stack
 
-const stack = new Stack();
-stack.push(5);
-stack.push(8);
-console.log(stack);
+// const stack = new Stack();
+// stack.push(5);
+// stack.push(8);
+// console.log(stack);
+
+function decimalToBinary(decNumber) {
+  const remStack = new Stack();
+  let number = decNumber;
+  let rem;
+  let binaryString = '';
+
+  while (number > 0) {
+    rem = Math.floor(number % 2);
+    remStack.push(rem);
+    number = Math.floor(number / 2);
+  }
+  while (!remStack.isEmpty()) {
+    binaryString += remStack.pop().toString();
+  }
+  return binaryString;
+}
+
+console.log(decimalToBinary(27));
